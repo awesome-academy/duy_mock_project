@@ -13,14 +13,14 @@
 ## Add environment variable:
 - Create file env: `cp .env.example .env`
 - Add value to environment variable in file `.env`
-- Please add environment variables to the file `.env.example` if you define a new environment variable
+- Please add environment variable to the file `.env.example` if you define a new environment variable
 
 # Database migrations:
 - Make migration files: `python manage.py makemigrations your_app`
 - Run migration files: `python manage.py migrate your_app`
 
-## Run auto check:
-- Run: `pycodestyle .`
+## Run auto check and fix:
+- Run: `black .`
 
 ## Run server in local:
-- Run `python manage.py migrate runserver`
+- Run `python manage.py runserver`
