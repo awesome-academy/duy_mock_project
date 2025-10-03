@@ -13,7 +13,7 @@
 ## Add environment variable:
 - Create file env: `cp .env.example .env`
 - Add value to environment variable in file `.env`
-- Please add environment variables to the file `.env.example` if you define a new environment variable
+- Please add environment variable to the file `.env.example` if you define a new environment variable
 
 # Database migrations:
 - Make migration files: `python manage.py makemigrations your_app`
