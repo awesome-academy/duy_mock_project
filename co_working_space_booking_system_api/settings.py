@@ -41,6 +41,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "users",
+    "working_spaces",
+    "spaces",
+    "space_members",
+    "space_bookings",
+    "payment_histories",
+    "amenities",
+    "space_prices",
+    "working_space_managers",
+    "tokens",
 ]
 
 MIDDLEWARE = [
@@ -130,3 +140,16 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MIGRATION_MODULES = {
+    "users": "migrations.users",
+    "tokens": "migrations.tokens",
+    "working_spaces": "migrations.working_spaces",
+    "working_space_managers": "migrations.working_space_managers",
+    "spaces": "migrations.spaces",
+    "space_members": "migrations.space_members",
+    "space_bookings": "migrations.space_bookings",
+    "payment_histories": "migrations.payment_histories",
+    "amenities": "migrations.amenities",
+    "space_prices": "migrations.space_prices",
+}
