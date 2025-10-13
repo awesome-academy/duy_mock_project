@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-14 07:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "This field may not be blank."
+msgstr "Trường này không được để trống."
+
+msgid "This field must be unique."
+msgstr "Giá trị này đã tồn tại, vui lòng chọn giá trị khác."
+
+msgid "The fields {field_names} must make a unique set."
+msgstr "Sự kết hợp giữa các trường {field_names} đã tồn tại."
+
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Trường này không được có nhiều hơn {max_length} ký tự."
+
+msgid "Ensure this field has at least {min_length} characters."
+msgstr "Trường này phải có ít nhất {min_length} ký tự."
+
+msgid "Enter a valid email address."
+msgstr "Vui lòng nhập một địa chỉ email hợp lệ."
+
+msgid "Refresh token is required."
+msgstr "Cần phải có mã thông báo làm mới."
+
+msgid "Successfully logged out."
+msgstr "Đã đăng xuất thành công."
+
+msgid "Token is blacklisted"
+msgstr "Mã thông báo bị đưa vào danh sách đen"
+
+msgid "User registered successfully. Please check your email to verify your account."
+msgstr "Người dùng đã đăng ký thành công. Vui lòng kiểm tra email để xác minh tài khoản của bạn."
+
+msgid "Email verified successfully. You can now log in."
+msgstr "Email đã được xác minh thành công. Bây giờ bạn có thể đăng nhập."
+
+msgid "Activation link is invalid or has expired."
+msgstr "Liên kết kích hoạt không hợp lệ hoặc đã hết hạn."

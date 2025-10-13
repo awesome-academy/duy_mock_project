@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework_simplejwt.tokens import AccessToken, BlacklistMixin
 from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
 from users.models import User
 
@@ -21,3 +22,7 @@ class Token(SafeDeleteModel):
 
     def __str__(self):
         return f"Token for {self.user.username}"
+
+
+class BlacklistableAccessToken(BlacklistMixin, AccessToken):
+    pass
