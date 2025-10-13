@@ -24,12 +24,10 @@ class RegisterAPIView(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data.get("user", {}))
         serializer.is_valid(raise_exception=True)
-        try:
-            with transaction.atomic():
-                user = serializer.save()
-                send_verification_email(request, user)
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        with transaction.atomic():
+            user = serializer.save()
+            send_verification_email(request, user)
+
         return Response(
             {
                 "message": _(
