@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, UserManager
 
 
-class User(models.Model):
+class User(AbstractBaseUser):
     class UserStatus(models.IntegerChoices):
         REGISTERED = 1, "Registered"
         ACTIVED = 2, "Actived"
@@ -20,8 +21,13 @@ class User(models.Model):
     confirmed_at = models.DateTimeField(blank=True, null=True)
     reset_password_token = models.CharField(max_length=255, blank=True, null=True)
     reset_password_sent_at = models.DateTimeField(blank=True, null=True)
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = UserManager()
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     class Meta:
         ordering = ["created_at"]
