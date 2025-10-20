@@ -10,6 +10,12 @@ urlpatterns = [
         name="verify-email",
     ),
     path("profile/", views.ProfileAPIView.as_view()),
+    path("request-password-reset/", views.PasswordResetRequestAPIView.as_view()),
+    path(
+        "reset-password/<str:uidb64>/<str:token>/",
+        views.PasswordResetConfirmAPIView.as_view(),
+        name="reset-password",
+    ),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
