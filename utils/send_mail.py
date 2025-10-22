@@ -17,6 +17,7 @@ class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
 
 
 account_activation_token = AccountActivationTokenGenerator()
+reset_password_token = PasswordResetTokenGenerator()
 
 
 def send_verification_email(request, user):
@@ -35,6 +36,28 @@ def send_verification_email(request, user):
         {
             "user": user,
             "verification_url": verification_url,
+        },
+    )
+
+    send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+
+
+def send_password_reset_email(request, user):
+    """
+    Generates and sends a password reset email to the user.
+    """
+    token = reset_password_token.make_token(user)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    user.reset_password_token = token
+    user.reset_password_sent_at = timezone.now()
+    user.save()
+    reset_url = f"{settings.HOST_URL}/api/reset-password/{uid}/{token}/"
+    subject = "Reset Your Password"
+    message = render_to_string(
+        "password_reset_email.html",
+        {
+            "user": user,
+            "reset_url": reset_url,
         },
     )
 

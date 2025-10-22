@@ -24,3 +24,6 @@
 
 ## Run server in local:
 - Run `python manage.py runserver`
+
+## Whenever you define a new message, please add it to the locale/vi/LC_MESSAGES/django.po file and run the script to update the locale/vi/LC_MESSAGES/django.mo file.
+- Run `python manage.py compilemessages`
