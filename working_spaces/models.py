@@ -1,7 +1,10 @@
 from django.db import models
+from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
 
 
-class WorkingSpace(models.Model):
+class WorkingSpace(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+
     name = models.CharField(max_length=255, unique=True)
     city = models.CharField(max_length=100)
     street = models.CharField(max_length=255)
