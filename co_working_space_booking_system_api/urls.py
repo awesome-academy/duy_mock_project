@@ -21,4 +21,5 @@ urlpatterns = [
     path("api/", include("users.urls")),
     path("api/", include("tokens.urls")),
     path("api/", include("working_spaces.urls")),
+    path("api/", include("spaces.urls")),
 ]

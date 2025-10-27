@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-import environ
 from datetime import timedelta
+from pathlib import Path
+
+import environ
 from django.utils.translation import gettext_lazy as _
 
 env = environ.Env(DEBUG=(bool, False))
@@ -183,7 +184,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = "users.User"
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=45),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
     "SIGNING_KEY": env("SECRET_KEY"),
     "ROTATE_REFRESH_TOKENS": True,
@@ -207,6 +208,7 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.request",
                 "django.contrib.messages.context_processors.messages",
             ]
         },
@@ -216,3 +218,30 @@ TEMPLATES = [
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 HOST_URL = env("HOST_URL")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "django.db.backends": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+        "spaces": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
+}

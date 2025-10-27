@@ -1,5 +1,6 @@
 from django.db import models
-from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
+from safedelete.models import SOFT_DELETE_CASCADE, SafeDeleteModel
+
 from working_spaces.models import WorkingSpace
 
 

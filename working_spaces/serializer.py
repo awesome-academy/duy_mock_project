@@ -1,7 +1,8 @@
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
-from working_spaces.models import WorkingSpace
+
 from utils.validators import validate_location_map
+from working_spaces.models import WorkingSpace
 
 
 class WorkingSpaceSerializer(serializers.ModelSerializer):

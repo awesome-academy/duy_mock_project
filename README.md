@@ -21,6 +21,7 @@
 
 ## Run auto check and fix:
 - Run: `black .`
+- Run: `isort .`
 
 ## Run server in local:
 - Run `python manage.py runserver`
