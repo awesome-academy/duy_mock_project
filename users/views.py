@@ -1,20 +1,21 @@
-from django.utils.http import urlsafe_base64_decode
-from django.utils.encoding import force_str
 from django.db import transaction
 from django.utils import timezone
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
-from rest_framework import status
+from rest_framework import generics, permissions, status
 from rest_framework.response import Response
-from rest_framework import permissions, generics
+
 from utils.send_mail import (
-    send_verification_email,
-    send_password_reset_email,
     account_activation_token,
     reset_password_token,
+    send_password_reset_email,
+    send_verification_email,
 )
-from .serializers.register_serializer import RegisterSerializer
-from .serializers.profile_serializer import UserInfoSerializer
+
 from .models import User
+from .serializers.profile_serializer import UserInfoSerializer
+from .serializers.register_serializer import RegisterSerializer
 
 
 class RegisterAPIView(generics.CreateAPIView):

@@ -1,6 +1,7 @@
 from django.db import models
 from rest_framework_simplejwt.tokens import AccessToken, BlacklistMixin
-from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
+from safedelete.models import SOFT_DELETE_CASCADE, SafeDeleteModel
+
 from users.models import User
 
 

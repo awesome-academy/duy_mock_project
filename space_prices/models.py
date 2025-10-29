@@ -1,5 +1,6 @@
 from django.db import models
-from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
+from safedelete.models import SOFT_DELETE_CASCADE, SafeDeleteModel
+
 from spaces.models import Space
 
 
@@ -11,7 +12,9 @@ class SpacePrice(SafeDeleteModel):
         DAILY = 2, "Daily"
         MONTHLY = 3, "Monthly"
 
-    space = models.ForeignKey(Space, on_delete=models.CASCADE)
+    space = models.ForeignKey(
+        Space, related_name="space_prices", on_delete=models.CASCADE
+    )
     price_type = models.IntegerField(
         choices=PriceType.choices, default=PriceType.HOURLY
     )

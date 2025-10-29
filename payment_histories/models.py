@@ -1,7 +1,8 @@
 from django.db import models
-from safedelete.models import SafeDeleteModel, SOFT_DELETE_CASCADE
-from users.models import User
+from safedelete.models import SOFT_DELETE_CASCADE, SafeDeleteModel
+
 from spaces.models import Space
+from users.models import User
 
 
 class PaymentHistory(SafeDeleteModel):

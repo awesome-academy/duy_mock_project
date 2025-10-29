@@ -1,17 +1,19 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from django.utils.translation import gettext_lazy as _
-from django.shortcuts import get_object_or_404
 from django.db import transaction
+from django.shortcuts import get_object_or_404
+from django.utils.translation import gettext_lazy as _
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, permissions, status
 from rest_framework.filters import OrderingFilter
-from rest_framework import permissions, generics, status
 from rest_framework.response import Response
-from utils.permissions import IsActiveUser
+
 from utils.custom_pagination import CustomPagination
+from utils.permissions import IsActiveUser
 from working_space_managers.models import WorkingSpaceManager
-from .models import WorkingSpace
-from .serializer import WorkingSpaceSerializer
-from .permissions import IsWorkingSpaceManager
-from .filters import WorkingSpaceFilter
+from working_spaces.filters import WorkingSpaceFilter
+from working_spaces.models import WorkingSpace
+from working_spaces.permissions import IsWorkingSpaceManager
+from working_spaces.serializer import WorkingSpaceSerializer
+
 
 class WorkingSpaceListCreateView(generics.ListCreateAPIView):
     queryset = WorkingSpace.objects.all()
@@ -59,7 +61,7 @@ class WorkingSpaceRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIVie
         working_space = get_object_or_404(WorkingSpace, pk=self.kwargs.get("pk", None))
         self.check_object_permissions(self.request, working_space)
         return working_space
-    
+
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
             return [permissions.IsAuthenticatedOrReadOnly(), IsActiveUser()]
